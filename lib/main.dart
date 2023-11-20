@@ -25,13 +25,11 @@ class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
 
   @override
-  // ignore: library_private_types_in_public_api
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final TextEditingController _searchController =
-      TextEditingController(); // Create an instance of TextEditingController
+  final TextEditingController _searchController = TextEditingController();
 
   List<Character> initialCharacters = [];
 
@@ -84,8 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: [
                   Expanded(
                     child: TextField(
-                      controller:
-                          _searchController, // Assign the TextEditingController to the TextField
+                      controller: _searchController,
                       decoration: const InputDecoration(
                         hintText: 'Search',
                         border: OutlineInputBorder(),
@@ -102,7 +99,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
             Expanded(

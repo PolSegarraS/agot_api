@@ -15,7 +15,6 @@ class CharacterList extends StatelessWidget {
   ListView _buildList(context) {
     return ListView.builder(
       itemCount: characters.length,
-      // ignore: avoid_types_as_parameter_names
       itemBuilder: (context, int) {
         return CharacterCard(characters[int]);
       },
