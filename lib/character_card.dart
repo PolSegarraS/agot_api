@@ -17,6 +17,7 @@ class _CharacterCardState extends State<CharacterCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
       child: Row(
         children: [
           Expanded(
@@ -38,7 +39,6 @@ class _CharacterCardState extends State<CharacterCard> {
             flex: 2,
             child: Container(
               height: 120,
-              color: Colors.red,
               padding: const EdgeInsets.all(10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -46,7 +46,7 @@ class _CharacterCardState extends State<CharacterCard> {
                   Text(
                     character.fullName.toString(),
                     style: const TextStyle(
-                      color: Colors.white,
+                      color: Colors.black,
                       fontSize: 20,
                     ),
                     textAlign: TextAlign.left,
@@ -54,7 +54,7 @@ class _CharacterCardState extends State<CharacterCard> {
                   Text(
                     character.family.toString(),
                     style: const TextStyle(
-                      color: Colors.white,
+                      color: Colors.black,
                       fontSize: 16,
                     ),
                     textAlign: TextAlign.left,
@@ -62,7 +62,7 @@ class _CharacterCardState extends State<CharacterCard> {
                   Text(
                     character.title.toString(),
                     style: const TextStyle(
-                      color: Colors.white,
+                      color: Colors.black,
                       fontSize: 16,
                     ),
                     textAlign: TextAlign.left,

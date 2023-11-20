@@ -30,6 +30,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final TextEditingController _searchController =
+      TextEditingController(); // Create an instance of TextEditingController
+
   List<Character> initialCharacters = [];
 
   Future<void> grabCharacters() async {
@@ -49,7 +52,9 @@ class _MyHomePageState extends State<MyHomePage> {
   Future<void> addCharacter(String name) async {
     final int tempId = await searchCharacterIdByName(name);
     final Character tempCharacter = await fetchCharacter(tempId);
-    initialCharacters.add(tempCharacter);
+    setState(() {
+      initialCharacters.add(tempCharacter);
+    });
   }
 
   @override
@@ -69,30 +74,41 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar: AppBar(
           title: const Text('A Game of Thrones Characters'),
         ),
-          body: Column(
-            children: [
-              Container(
-                color: Colors.green,
-                height: 50,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Green Row',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
+        body: Column(
+          children: [
+            Container(
+              height: 50,
+              padding: const EdgeInsets.fromLTRB(5, 5, 5, 0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: TextField(
+                      controller:
+                          _searchController, // Assign the TextEditingController to the TextField
+                      decoration: const InputDecoration(
+                        hintText: 'Search',
+                        border: OutlineInputBorder(),
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.search),
+                    onPressed: () {
+                      addCharacter(_searchController.text);
+                    },
+                    color: Colors.deepPurple,
+                  ),
+                ],
               ),
-              Expanded(
-                child: CharacterList(initialCharacters),
-              ),
-            ],
-          ),
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            Expanded(
+              child: CharacterList(initialCharacters),
+            ),
+          ],
         ),
       ),
     );
