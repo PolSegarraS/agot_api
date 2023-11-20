@@ -6,14 +6,14 @@ import 'package:flutter/material.dart';
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key});
+  const MyApp({super.key});
 
   @override
   build(BuildContext context) {
     return MaterialApp(
-      title: 'My fav Digimons',
+      title: 'My fav Characters',
       theme: ThemeData(brightness: Brightness.dark),
-      home: MyHomePage(
+      home: const MyHomePage(
         title: 'My fav Characters',
       ),
     );
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   final String title;
-  MyHomePage({Key? key, required this.title}) : super(key: key);
+  const MyHomePage({Key? key, required this.title}) : super(key: key);
 
   @override
   // ignore: library_private_types_in_public_api
@@ -69,18 +69,30 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar: AppBar(
           title: const Text('A Game of Thrones Characters'),
         ),
-        body: Column(
-          children: [
-            Container(
-              color: Colors.green,
-              child: const Row(
-                children: [
-                  // Add your widgets here
-                ],
+          body: Column(
+            children: [
+              Container(
+                color: Colors.green,
+                height: 50,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Green Row',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            CharacterList(initialCharacters),
-          ],
+              Expanded(
+                child: CharacterList(initialCharacters),
+              ),
+            ],
+          ),
         ),
       ),
     );
