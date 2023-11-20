@@ -69,8 +69,18 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar: AppBar(
           title: const Text('A Game of Thrones Characters'),
         ),
-        body: Center(
-          child: CharacterList(initialCharacters),
+        body: Column(
+          children: [
+            Container(
+              color: Colors.green,
+              child: const Row(
+                children: [
+                  // Add your widgets here
+                ],
+              ),
+            ),
+            CharacterList(initialCharacters),
+          ],
         ),
       ),
     );
