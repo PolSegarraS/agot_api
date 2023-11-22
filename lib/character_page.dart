@@ -1,25 +1,53 @@
-import 'package:agot_api/character_model.dart';
 import 'package:flutter/material.dart';
+import 'package:agot_api/character_model.dart';
 
 class CharacterPage extends StatefulWidget {
-  const CharacterPage({Key? key}) : super(key: key);
+  final Character character;
+
+  const CharacterPage(this.character, {Key? key}) : super(key: key);
 
   @override
-  State<CharacterPage> createState() {
-    return _CharacterPageState();
-  }
+  // ignore: library_private_types_in_public_api, no_logic_in_create_state
+  _CharacterPageState createState() => _CharacterPageState(character);
 }
 
 class _CharacterPageState extends State<CharacterPage> {
-  String name = '';
+  late Character character;
+  _CharacterPageState(this.character);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text($name'CharacterPage'),
+        title: Text(character.fullName.toString()),
       ),
-      body: const Center(
-        child: Text('Character Page'),
+      body: Row(
+        children: [
+          Text(
+            character.fullName.toString(),
+            style: const TextStyle(
+              color: Colors.black,
+              fontSize: 20,
+            ),
+            textAlign: TextAlign.left,
+          ),
+          Text(
+            character.family.toString(),
+            style: const TextStyle(
+              color: Colors.black,
+              fontSize: 16,
+            ),
+            textAlign: TextAlign.left,
+          ),
+          Text(
+            character.title.toString(),
+            style: const TextStyle(
+              color: Colors.black,
+              fontSize: 16,
+            ),
+            textAlign: TextAlign.left,
+          ),
+        ],
       ),
     );
   }

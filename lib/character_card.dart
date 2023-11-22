@@ -1,6 +1,7 @@
 import 'package:agot_api/character_model.dart';
 import 'package:agot_api/code_page.dart';
 import 'package:flutter/material.dart';
+import 'package:agot_api/character_page.dart';
 
 class CharacterCard extends StatefulWidget {
   final Character character;
@@ -23,9 +24,9 @@ class _CharacterCardState extends State<CharacterCard> {
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) {
-              return const CodePage(
-                title: 'Related Fields',
-                child: RelatedFields(),
+              return CodePage(
+                title: 'Character Page',
+                child: CharacterPage(character),
               );
             },
           ),
