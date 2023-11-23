@@ -36,11 +36,11 @@ class _MyHomePageState extends State<MyHomePage> {
   Future<void> grabCharacters() async {
     List<Character> initialCharactersFetched = [];
 
-    final Character initCharacter = await fetchCharacter(1);
+    final Character initCharacter = await fetchCharacter(0);
     initialCharactersFetched.add(initCharacter);
-    final Character initCharacter1 = await fetchCharacter(2);
+    final Character initCharacter1 = await fetchCharacter(1);
     initialCharactersFetched.add(initCharacter1);
-    final Character initCharacter2 = await fetchCharacter(3);
+    final Character initCharacter2 = await fetchCharacter(2);
     initialCharactersFetched.add(initCharacter2);
     setState(() {
       initialCharacters = initialCharactersFetched;
@@ -73,7 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
           title: const Text('A Game of Thrones Characters'),
         ),
         body: Column(
-          children: [
+          children: <Widget>[
             Container(
               height: 50,
               padding: const EdgeInsets.fromLTRB(5, 5, 5, 0),
@@ -106,6 +106,13 @@ class _MyHomePageState extends State<MyHomePage> {
               child: CharacterList(initialCharacters),
             ),
           ],
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            setState(() {});
+          },
+          backgroundColor: Colors.deepPurple,
+          child: const Icon(Icons.update),
         ),
       ),
     );

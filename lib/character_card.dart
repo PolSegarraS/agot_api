@@ -25,8 +25,8 @@ class _CharacterCardState extends State<CharacterCard> {
           MaterialPageRoute(
             builder: (context) {
               return CodePage(
-                title: 'Character Page',
-                child: CharacterPage(character),
+                title: 'Character Detail Page',
+                child: CharacterDetailPage(character),
               );
             },
           ),
@@ -83,6 +83,23 @@ class _CharacterCardState extends State<CharacterCard> {
                       ),
                       textAlign: TextAlign.left,
                     ),
+                    Row(
+                      children: [
+                        const Icon(
+                          Icons.star,
+                          size: 20,
+                          color: Colors.black,
+                        ),
+                        Text(
+                          '${character.rating}/10',
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 16,
+                          ),
+                          textAlign: TextAlign.left,
+                        ),
+                      ],
+                    )
                   ],
                 ),
               ),

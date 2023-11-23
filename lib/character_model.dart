@@ -44,6 +44,8 @@ class Character {
   final String? image;
   final String? imageUrl;
 
+  int rating = 10;
+
   Character({
     required this.id,
     this.firstName,
@@ -53,6 +55,7 @@ class Character {
     this.family,
     this.image,
     this.imageUrl,
+    this.rating = 10,
   });
 
   factory Character.fromJson(Map<String, dynamic> json) {
